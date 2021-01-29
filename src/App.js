@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import PropTypes from "prop-types";
 
 function Food({ name, image }) {
     console.log(image);
