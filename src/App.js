@@ -1,25 +1,22 @@
 /** @format */
 
-import axios from "axios";
 import React from "react";
+import "./App.css";
+import {HashRouter, Route} from "react-router-dom";
+import About from "./routes/About";
+import Home from "./routes/Home";
+import Navigation from "./components/Navigation";
+import Detail from "./routes/Detail";
 
-class App extends React.Component {
-    state = {
-        isLoading: true,
-        movies: [],
-    };
-
-    componentDidMount() {
-        // 영화 데이터 로딩
-        axios.get("https://yts-proxy.now.sh/list_movies.json");
-    }
-
-    render() {
-        const {isLoading} = this.state;
-        return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
-    }
+function App() {
+  return (
+    <HashRouter>
+      <Navigation />
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/movie-detail" component={Detail} />
+    </HashRouter>
+  );
 }
-
-// test
 
 export default App;
